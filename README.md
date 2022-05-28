@@ -1,8 +1,10 @@
 # noisee
 
-Reads the seed of your current Noita run from memory.
+Reads and displays the seed of your current Noita run from memory.
 
-# How to run
+![](https://user-images.githubusercontent.com/2971735/170843170-f4d830f6-0bb0-401d-b927-a186f22f8407.png)
+
+# How to run!
 
 Start noisee.exe before or after you start Noita.
 
