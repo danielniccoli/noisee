@@ -21,6 +21,7 @@ ConsoleColor defaultColor = Console.ForegroundColor;
 while (true)
 {
     #region WaitForNoitaProcess
+    noitaProcess = null;
     Console.Write($"Waiting for Noita process... ");
 
     do
@@ -36,7 +37,7 @@ while (true)
                 break;
             case > 1:
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Found!");                
+                Console.WriteLine("Found!");
                 Console.Error.WriteLine($"Warning: Found ${processes.Count()} Noita processes. Selecting most recent.");
                 Console.ForegroundColor = defaultColor;
                 noitaProcess = processes.OrderByDescending(p => p.StartTime).First();
@@ -56,9 +57,16 @@ while (true)
 
     do
     {
-        ReadProcessMemory(processHandle, noitaSeedOffset, buffer, buffer.Length, ref bytesRead);
-        int currentSeed = BitConverter.ToInt32(buffer, 0);
+        try
+        {
+            ReadProcessMemory(processHandle, noitaSeedOffset, buffer, buffer.Length, ref bytesRead);
+        }
+        catch
+        {
+            break;
+        }
 
+        int currentSeed = BitConverter.ToInt32(buffer, 0);
         if (currentSeed != 0 && currentSeed != seed)
         {
             seed = currentSeed;
