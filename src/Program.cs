@@ -72,7 +72,7 @@ while (true)
             seed = currentSeed;
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Seed: {seed} - https://cr4xy.dev/noita/?seed={seed}");
+            Console.WriteLine($"Seed: {seed} - https://www.noitool.com/?seed={seed}");
             Console.ForegroundColor = defaultColor;
         }
 
